@@ -1,1 +1,1 @@
-适配GRANDTOURINGVIP[ST23.6.28](github云端更新)
+适配GRANDTOURINGVIP[ST23.6.28] (github云端更新)
