@@ -17212,7 +17212,7 @@ end)
 Heist_Control_Load = menu.action(Heist_Control, "加载任务选项", {""}, "", function()
 notification("正在加载任务功能", colors.pink)
 wait(2000)
-require "lib.GTSCRIPTS.GTW.C"
+require "lib.GTSCRIPTS.GTW.C2"
 GTLuaScript.delete(Heist_Control_Load)
 end)
 
@@ -18140,12 +18140,20 @@ end)
 
 times_button_pressed = 0
 GTAC(other_options,"试试点击", {}, "一个友好的功能哟~\n连点有彩蛋喔~", function(f)
-anwo = f
+    anwo = f
     if anwo then
-        times_button_pressed = times_button_pressed + 1 util.toast("恭喜你，你被骗了 "..times_button_pressed.." 秒") if times_button_pressed == 10 then util.toast("哇10次，真是浪费时间") util.toast("哇10次，真是浪费时间") elseif times_button_pressed == 25 then util.toast("25倍的赞美你在浪费自己的时间") util.toast("25倍的赞美你在浪费自己的时间") elseif times_button_pressed == 50 then util.toast("好吧，兄弟50次，这里什么都没有，现在停止") util.toast("好吧，兄弟50次，这里什么都没有，现在停止") elseif times_button_pressed == 100 then util.toast("哇，你按了100次，你解锁了2tak1开发菜单") util.toast("哇，你按了100次，你解锁了2tak1开发菜单") elseif times_button_pressed == 200 then util.toast("他妈的200倍，你是想死吗?") util.toast("他妈的200倍，你是想死吗?") elseif times_button_pressed == 300 then util.toast("罚你达到500美元的奖金") util.toast("罚你达到500美元的奖金") elseif times_button_pressed == 500 then util.toast("哈哈，你得去拿奖") util.toast("哈哈，你得去拿奖") elseif times_button_pressed == 1000 then util.toast("这是你的奖品，给你两个大嘴巴 :)") util.toast("这是你的奖品，给你两个大嘴巴 :)") 
+        times_button_pressed = times_button_pressed + 1 util.toast("恭喜你，你被骗了 "..times_button_pressed.." 秒") 
+        if times_button_pressed == 10 then util.toast("哇10次，真是浪费时间") util.toast("哇10次，真是浪费时间") 
+        elseif times_button_pressed == 25 then util.toast("25倍的赞美你在浪费自己的时间") util.toast("25倍的赞美你在浪费自己的时间") 
+        elseif times_button_pressed == 50 then util.toast("好吧，兄弟50次，这里什么都没有，现在停止") util.toast("好吧，兄弟50次，这里什么都没有，现在停止") 
+        elseif times_button_pressed == 100 then util.toast("哇，你按了100次，你解锁了2tak1开发菜单") util.toast("哇，你按了100次，你解锁了2tak1开发菜单") 
+        elseif times_button_pressed == 200 then util.toast("他妈的200倍，你是想死吗?") util.toast("他妈的200倍，你是想死吗?") 
+        elseif times_button_pressed == 300 then util.toast("罚你达到500美元的奖金") util.toast("罚你达到500美元的奖金") 
+        elseif times_button_pressed == 500 then util.toast("哈哈，你得去拿奖") util.toast("哈哈，你得去拿奖") 
+        elseif times_button_pressed == 1000 then util.toast("这是你的奖品，给你两个大嘴巴 :)") util.toast("这是你的奖品，给你两个大嘴巴 :)") 
         end 
-        end
-    end)
+    end
+end)
 
 GTAC(other_options, "保存配置", {}, "", function ()
     GTLuaScript.trigger_commands("Profiles")
@@ -18198,7 +18206,6 @@ GTLP(newstext, "新闻恶搞", {"newsplay"}, "From GTVIP", function()
 xinwenegao()
 end)
     
-
 GTTG(zhujixianshi, "玩家栏1.0", {"playerbar1"}, "", function(state)
 bar = state        
 while bar do
@@ -18256,7 +18263,6 @@ end
 wait()
 end
 end)
-    
 
 GTTG(zhujixianshi, '玩家栏2.0', {"playerbar2"}, '', function (on)
 if on then
@@ -18707,62 +18713,62 @@ end)
 --默认显示信息---------------------
 require "lib.GTSCRIPTS.GTW.display"
 -----------------------------------
-    GenerateFeatures = function(PlayerID)
-    GTROOT = GTD(GTluaScript.player_root(PlayerID), "GRANDTOURINGVIP")
+GenerateFeatures = function(PlayerID)
+GTROOT = GTD(GTluaScript.player_root(PlayerID), "GRANDTOURINGVIP")
 
-    GT = GTluaScript.list
+GT = GTluaScript.list
 
-    PlayerMainMenu2 = GT(GTLuaScript.player_root(PlayerID), "踢出选项", {"GTKick"}, "赤诚相见,别来无恙", function();end)
-    menu.set_visible(PlayerMainMenu2, false)
-    
-    blockscid3 = GTAC(GTLuaScript.player_root(PlayerID), "踢出选项", {""}, "赤诚相见,别来无恙", function()
-        local name = PLAYER.GET_PLAYER_NAME(PlayerID)
-        for _, id in ipairs(spid) do
-            menu.trigger_commands("GTKick"..PLAYER.GET_PLAYER_NAME(PlayerID))
-        end
-    end)
+PlayerMainMenu2 = GT(GTLuaScript.player_root(PlayerID), "踢出选项", {"GTKick"}, "赤诚相见,别来无恙", function();end)
+menu.set_visible(PlayerMainMenu2, false)
 
-    GTAC(PlayerMainMenu2, "快速踢出", {}, "", function()
+blockscid3 = GTAC(GTLuaScript.player_root(PlayerID), "踢出选项", {""}, "赤诚相见,别来无恙", function()
+    local name = PLAYER.GET_PLAYER_NAME(PlayerID)
+    for _, id in ipairs(spid) do
+        menu.trigger_commands("GTKick"..PLAYER.GET_PLAYER_NAME(PlayerID))
+    end
+end)
+
+GTAC(PlayerMainMenu2, "快速踢出", {}, "", function()
     KickPlayer(PlayerID, "Smart")
-    end)
+end)
 
-    GTAC(PlayerMainMenu2, "脚本事件踢出", {}, "", function()
-        menu.trigger_commands("scripthost")
-        menu.trigger_commands("nonhostkick".. PLAYER.GET_PLAYER_NAME(PlayerID))
-    end)
+GTAC(PlayerMainMenu2, "脚本事件踢出", {}, "", function()
+    menu.trigger_commands("scripthost")
+    menu.trigger_commands("nonhostkick".. PLAYER.GET_PLAYER_NAME(PlayerID))
+end)
 
-    GTAC(PlayerMainMenu2, "阻止加入踢", {"blast"}, "将玩家踢出并无法加入此战局\n可在(线上-战局选项-阻止加入-已移除的玩家)中将该玩家移除", function()
-        menu.trigger_commands("smart".. PLAYER.GET_PLAYER_NAME(PlayerID))
-        menu.trigger_commands("historyblock".. PLAYER.GET_PLAYER_NAME(PlayerID))
-    end)
+GTAC(PlayerMainMenu2, "阻止加入踢", {"blast"}, "将玩家踢出并无法加入此战局\n可在(线上-战局选项-阻止加入-已移除的玩家)中将该玩家移除", function()
+    menu.trigger_commands("smart".. PLAYER.GET_PLAYER_NAME(PlayerID))
+    menu.trigger_commands("historyblock".. PLAYER.GET_PLAYER_NAME(PlayerID))
+end)
 
-    GTAC(PlayerMainMenu2, "智能", {"smartkick"}, "", function()
+GTAC(PlayerMainMenu2, "智能", {"smartkick"}, "", function()
     GTLuaScript.trigger_commands("kick"..PLAYER.GET_PLAYER_NAME(PlayerID))
-    end)
+end)
 
-    GTAC(PlayerMainMenu2, "池被关闭", {"aidskick"}, "", function()
+GTAC(PlayerMainMenu2, "池被关闭", {"aidskick"}, "", function()
     GTLuaScript.trigger_commands("aids"..PLAYER.GET_PLAYER_NAME(PlayerID))
-        end)
+end)
 
-    GTAC(PlayerMainMenu2, "情书", {"lovekick"}, "", function()
+GTAC(PlayerMainMenu2, "情书", {"lovekick"}, "", function()
     GTLuaScript.trigger_commands("loveletterkick"..PLAYER.GET_PLAYER_NAME(PlayerID))
-        end)
+end)
 
-    GTAC(PlayerMainMenu2, "高潮", {"orgkick"}, "Blocked by popular menus.", function()
+GTAC(PlayerMainMenu2, "高潮", {"orgkick"}, "Blocked by popular menus.", function()
     GTLuaScript.trigger_commands("orgasmkick"..PLAYER.GET_PLAYER_NAME(PlayerID))
-        end)
+end)
 
-    GTAC(PlayerMainMenu2, "黑名单", {"blacklistkick"}, "", function()
+GTAC(PlayerMainMenu2, "黑名单", {"blacklistkick"}, "", function()
     GTLuaScript.trigger_commands("blacklist"..PLAYER.GET_PLAYER_NAME(PlayerID))
-        end)
+end)
 
-    GTAC(PlayerMainMenu2, "主机", {"kickhost"}, "", function()
+GTAC(PlayerMainMenu2, "主机", {"kickhost"}, "", function()
     GTLuaScript.trigger_commands("hostkick"..PLAYER.GET_PLAYER_NAME(PlayerID))
-        end)
+end)
 
-    GTAC(PlayerMainMenu2, "非主机", {"kicknonhost"}, "", function()
+GTAC(PlayerMainMenu2, "非主机", {"kicknonhost"}, "", function()
     GTLuaScript.trigger_commands("nonhostkick"..PLAYER.GET_PLAYER_NAME(PlayerID))
-        end)
+end)
 
 --
 PlayerMainMenu = GT(GTLuaScript.player_root(PlayerID), "崩溃选项", {"GTCrash"}, "玩火自焚,后果自负", function();end)
@@ -18785,65 +18791,65 @@ end)
 updates = GT(PlayerMainMenu, "近期更新", {}, "#此选项的崩溃为中等强度及以上\n#请您不要观看并且远离崩溃对象\n#切记:请不要无脑使用,否则玩火自焚\n#注意:崩溃需要您自行研究,切莫魔怔\n\n<建议1> #偷偷告诉您,附加黑洞效果更佳喔~\n<建议2> #针对主流菜单的情况下,其实踢出是最优选择喔~")
 
 standbk = GT(PlayerMainMenu, "渲染器崩溃", {}, "")
-       GTTG(standbk, "全部类型", {"togglescenariocrashes"}, "It's risky to spectate using this but your call", function(on_toggle)
-        if on_toggle then
-            wait()
-            menu.trigger_commands("hunhezaiju" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("cigarscrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("spatularcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("barbellcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("hammercrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("fishingcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("jackhammercrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("broomcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("drunkcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("trowelcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("torchcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("coffeecrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-        else
-            wait()
-            menu.trigger_commands("hunhezaiju" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("cigarscrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("spatularcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("barbellcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("hammercrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("fishingcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("jackhammercrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("broomcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("drunkcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("trowelcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("torchcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("coffeecrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
-            wait(10)
-            menu.trigger_commands("noentities")
-            wait(10)
-            menu.trigger_commands("noentities")
-            wait()
-            end
-        end)
+GTTG(standbk, "全部类型", {"togglescenariocrashes"}, "It's risky to spectate using this but your call", function(on_toggle)
+if on_toggle then
+    wait()
+    menu.trigger_commands("hunhezaiju" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("cigarscrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("spatularcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("barbellcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("hammercrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("fishingcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("jackhammercrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("broomcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("drunkcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("trowelcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("torchcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("coffeecrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+else
+    wait()
+    menu.trigger_commands("hunhezaiju" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("cigarscrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("spatularcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("barbellcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("hammercrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("fishingcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("jackhammercrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("broomcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("drunkcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("trowelcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("torchcrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("coffeecrash" .. PLAYER.GET_PLAYER_NAME(PlayerID))
+    wait(10)
+    menu.trigger_commands("noentities")
+    wait(10)
+    menu.trigger_commands("noentities")
+    wait()
+    end
+end)
 
 local peds = 5
 GTLuaScript.slider(standbk, "咖啡杯数量", {"nocoffeecups"}, "Sends Coffee crash.", 1, 200, 200, 1, function(amount)
